@@ -16,12 +16,10 @@ export default class Main extends React.Component{
         }
 
 
-
         const FilterDemocrats = () => {
             const DemSen = SenData.filter((politician) => { return politician.party === "Democrat" })
             this.setState({ senators: DemSen , showpol: true })
         }
-
 
 
         const FilterUtahSenators = () => {
@@ -36,12 +34,12 @@ export default class Main extends React.Component{
         }
 
 
-
-        const showData = () => {
+        const RenderToScreen = () => {
+            console.clear()
             console.log(this.state.senators)
             return this.state.senators.map((politician) => { return <Template key={politician.phone} info={politician} />  })
         }
-        
+
 
         return(
             <div>
@@ -54,10 +52,9 @@ export default class Main extends React.Component{
                     <button className="MyButton" onClick={ FilterUtahSenior } >Utah Senior Senator</button>
                 </div>    
              
-
                 <hr/>
                 
-                { this.state.showpol ? React.createElement(showData) : <div>Click a button</div> }
+                { this.state.showpol ? React.createElement( RenderToScreen ) : <div>Click a button</div> }
 
             </div>
         )
